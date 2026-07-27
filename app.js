@@ -108,9 +108,65 @@ document.addEventListener('DOMContentLoaded', () => {
   calculateEstimatedPrice();
   setupHubSwitcher();
   setupFAQAccordion();
+  setupMobileNav();
   initScrollAnimations();
   initRealVehicleShowroom();
 });
+
+function setupMobileNav() {
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('navMenu');
+  if (!toggle || !menu) return;
+
+  const closeMenu = () => {
+    toggle.classList.remove('is-open');
+    menu.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
+    document.body.classList.remove('nav-open');
+  };
+
+  const openMenu = () => {
+    toggle.classList.add('is-open');
+    menu.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close menu');
+    document.body.classList.add('nav-open');
+  };
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (menu.classList.contains('is-open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  const drawerCloseBtn = document.getElementById('navDrawerClose');
+  if (drawerCloseBtn) {
+    drawerCloseBtn.addEventListener('click', closeMenu);
+  }
+
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!menu.classList.contains('is-open')) return;
+    if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 992) closeMenu();
+  });
+}
 
 // Setup Scroll Animations Observer
 function initScrollAnimations() {
@@ -335,10 +391,24 @@ function setupEventListeners() {
     });
   });
 
+  // Segmented Plan Control
+  const segmentBtns = document.querySelectorAll('#planSegmentedControl .segment-btn');
+  const packageTypeSelect = document.getElementById('packageTypeSelect');
+  segmentBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      segmentBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const plan = btn.getAttribute('data-plan');
+      if (packageTypeSelect) {
+        packageTypeSelect.value = plan;
+        calculateEstimatedPrice();
+      }
+    });
+  });
+
   const pickupInput = document.getElementById('pickupDate');
   const returnInput = document.getElementById('returnDate');
   const vehicleSelect = document.getElementById('vehicleSelect');
-  const packageTypeSelect = document.getElementById('packageTypeSelect');
   const kmPackageSelect = document.getElementById('kmPackageSelect');
   const airportDeliveryCheckbox = document.getElementById('airportDeliveryCheckbox');
   const promoInput = document.getElementById('promoInput');
@@ -488,7 +558,7 @@ function openCarModal(vehicleId) {
       <img src="${car.image}" alt="${car.name}" style="max-height:180px; max-width:100%; object-fit:contain;">
     </div>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:16px; margin-bottom:20px;">
       <div style="background:rgba(250, 175, 24, 0.15); border:1px solid var(--brand-yellow); padding:12px 16px; border-radius:10px;">
         <div style="font-size:0.75rem; color:var(--brand-black); font-weight:800;">DAILY RENTAL RATE</div>
         <div style="font-size:1.4rem; font-weight:900; color:var(--brand-black);">₹${car.rate.toLocaleString('en-IN')} <span style="font-size:0.8rem; color:var(--text-muted);">/ day</span></div>
@@ -503,7 +573,7 @@ function openCarModal(vehicleId) {
 
     <div style="background:var(--bg-surface); border:1px solid var(--border-card); border-radius:12px; padding:16px; margin-bottom:24px;">
       <h4 style="font-size:0.95rem; margin-bottom:12px; color:var(--brand-black);">Key Specifications & Rental Policies</h4>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:0.88rem; color:var(--text-main);">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px; font-size:0.88rem; color:var(--text-main);">
         <div>⚡ <strong>Power:</strong> ${car.power}</div>
         <div>⚙️ <strong>Transmission:</strong> ${car.transmission}</div>
         <div>💺 <strong>Capacity:</strong> ${car.seats} Persons</div>
@@ -513,8 +583,8 @@ function openCarModal(vehicleId) {
       </div>
     </div>
 
-    <div style="display:flex; gap:12px;">
-      <a href="https://wa.me/917034060000?text=${encodeURIComponent('Hello SACH CARS, I would like to reserve the ' + car.name + ' with Promo Code OFF300')}" target="_blank" class="btn-standard btn-whatsapp" style="flex:1;">
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a href="https://wa.me/917034060000?text=${encodeURIComponent('Hello SACH CARS, I would like to reserve the ' + car.name + ' with Promo Code OFF300')}" target="_blank" class="btn-standard btn-whatsapp" style="flex:1; min-width:200px;">
         Reserve ${car.name} via WhatsApp 💬
       </a>
     </div>

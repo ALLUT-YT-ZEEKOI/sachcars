@@ -13,7 +13,8 @@
 
   <!-- PROMO ANNOUNCEMENT BANNER -->
   <div class="promo-top-banner">
-    <span>🎉 SPECIAL OFFER: Get up to ₹300 Cashback on your self-drive booking!</span>
+    <span class="promo-text-full">🎉 SPECIAL OFFER: Get up to ₹300 Cashback on your self-drive booking!</span>
+    <span class="promo-text-short">🎉 Up to ₹300 Cashback</span>
     <span>Use Code: <span class="promo-code-chip">OFF300</span></span>
   </div>
 
@@ -22,13 +23,13 @@
     <div class="container top-bar-inner">
       <div class="status-left">
         <div class="status-badge-live">
-          <span class="dot"></span> 24/7 FLEET DISPATCH ONLINE
+          <span class="dot"></span> 24/7 ONLINE
         </div>
-        <div>📍 JNI Stadium Kaloor HQ, Kochi | Cochin Airport COK Pickup Available</div>
+        <div class="status-location">📍 JNI Stadium Kaloor HQ, Kochi | Cochin Airport COK Pickup Available</div>
       </div>
       <div class="status-right">
-        <a href="tel:+917034060000" class="top-link">📞 Hotline: +91 70340 60000</a>
-        <a href="https://wa.me/917034060000" target="_blank" class="top-link whatsapp-link">💬 WhatsApp Support</a>
+        <a href="tel:+917034060000" class="top-link">📞 +91 70340 60000</a>
+        <a href="https://wa.me/917034060000" target="_blank" class="top-link whatsapp-link">💬 WhatsApp</a>
       </div>
     </div>
   </div>
@@ -37,27 +38,38 @@
   <nav class="navbar">
     <div class="container nav-inner">
       <a href="#" class="brand-logo">
-        <div class="logo-badge">S</div>
-        <div class="brand-text">
-          <div class="brand-title">SACH<span>CARS</span></div>
-          <div class="brand-subtitle">SELF-DRIVE CARS & BIKES KERALA</div>
-        </div>
+        <img src="assets/sachcars-logo.png" alt="SACH CARZ — Rent a Car" class="brand-logo-img">
       </a>
 
-      <ul class="nav-links">
-        <li><a href="#hero" class="nav-link active">Home</a></li>
-        <li><a href="#booking" class="nav-link">Book Now</a></li>
-        <li><a href="#about" class="nav-link">About Us</a></li>
-        <li><a href="#values" class="nav-link">Top Values</a></li>
-        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
-        <li><a href="#policies" class="nav-link">Policies</a></li>
-        <li><a href="#fleet" class="nav-link">Our Fleet</a></li>
-        <li><a href="#hubs" class="nav-link">Kerala Depots</a></li>
-        <li><a href="#faq" class="nav-link">FAQ</a></li>
-      </ul>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
 
-      <div class="nav-cta">
-        <a href="#booking" class="btn-standard btn-primary">Reserve Now</a>
+      <div class="nav-menu" id="navMenu">
+        <div class="nav-drawer-header">
+          <a href="#" class="brand-logo">
+            <img src="assets/sachcars-logo.png" alt="SACH CARZ — Rent a Car" class="brand-logo-img">
+          </a>
+          <button type="button" class="nav-drawer-close" id="navDrawerClose" aria-label="Close menu">✕</button>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#booking" class="nav-link">Book Now</a></li>
+          <li><a href="#about" class="nav-link">About Us</a></li>
+          <li><a href="#values" class="nav-link">Top Values</a></li>
+          <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+          <li><a href="#policies" class="nav-link">Policies</a></li>
+          <li><a href="#fleet" class="nav-link">Our Fleet</a></li>
+          <li><a href="#hubs" class="nav-link">Kerala Depots</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+
+        <div class="nav-cta">
+          <a href="#booking" class="btn-standard btn-primary">Reserve Now</a>
+        </div>
       </div>
     </div>
   </nav>
@@ -116,62 +128,96 @@
       <div class="booking-card reveal-on-scroll">
         <div class="console-header">
           <div class="console-title">
-            <span style="color:var(--brand-yellow-hover)">🎛️</span> Instant Rental Booking & Price Calculator
+            <span class="console-icon-wrap">🎛️</span>
+            <div>
+              <div class="console-heading">Instant Rental Booking</div>
+              <div class="console-subheading">Live Fare Calculator & Instant WhatsApp Booking</div>
+            </div>
           </div>
-          <div class="pill-badge-brand" style="margin-bottom:0;">Instant Fare Calculation</div>
+          <div class="pill-badge-brand">⚡ Real-time Fare Matrix</div>
         </div>
+
+        <!-- Segmented Plan Type Selector -->
+        <div class="segmented-control" id="planSegmentedControl">
+          <button type="button" class="segment-btn active" data-plan="24h">
+            <span>🚗 Daily (24 Hours)</span>
+          </button>
+          <button type="button" class="segment-btn" data-plan="12h">
+            <span>⚡ 12-Hour Package</span>
+          </button>
+          <button type="button" class="segment-btn" data-plan="monthly">
+            <span>📅 Monthly (30+ Days)</span>
+          </button>
+        </div>
+
+        <!-- Hidden Select for Calculation Sync -->
+        <select id="packageTypeSelect" style="display:none;">
+          <option value="24h" selected>Daily Rental (24 Hours)</option>
+          <option value="12h">12-Hour Package (Min Period)</option>
+          <option value="monthly">Monthly Rental (30+ Days Plan)</option>
+        </select>
 
         <div class="booking-form-grid">
           <div class="form-group">
-            <label class="form-label" for="packageTypeSelect">Rental Plan Option</label>
-            <select id="packageTypeSelect" class="form-control">
-              <option value="24h">Daily Rental (24 Hours)</option>
-              <option value="12h">12-Hour Package (Min Period)</option>
-              <option value="monthly">Monthly Rental (30+ Days Plan)</option>
-            </select>
+            <label class="form-label" for="pickupLocation">
+              <span class="label-icon">📍</span> Pickup Depot / Hub
+            </label>
+            <div class="custom-select-wrap">
+              <select id="pickupLocation" class="form-control">
+                <option value="Kochi - Kaloor Stadium HQ">Kochi - Kaloor Stadium HQ</option>
+                <option value="Cochin International Airport (COK)">Cochin Airport (COK)</option>
+                <option value="Kollam City Hub">Kollam City Hub</option>
+                <option value="Adoor & Kottayam Hub">Adoor & Kottayam Hub</option>
+                <option value="Pathanamthitta Hub">Pathanamthitta Hub</option>
+                <option value="Trivandrum Hub">Trivandrum Hub</option>
+                <option value="Doorstep Delivery Kochi">Doorstep Delivery (Kochi)</option>
+              </select>
+              <span class="select-chevron">▾</span>
+            </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="pickupLocation">Pickup Depot / Location</label>
-            <select id="pickupLocation" class="form-control">
-              <option value="Kochi - Kaloor Stadium HQ">Kochi - Kaloor Stadium HQ</option>
-              <option value="Cochin International Airport (COK)">Cochin Airport (COK)</option>
-              <option value="Kollam City Hub">Kollam City Hub</option>
-              <option value="Adoor & Kottayam Hub">Adoor & Kottayam Hub</option>
-              <option value="Pathanamthitta Hub">Pathanamthitta Hub</option>
-              <option value="Trivandrum Hub">Trivandrum Hub</option>
-              <option value="Doorstep Delivery Kochi">Doorstep Delivery (Kochi)</option>
-            </select>
+            <label class="form-label" for="vehicleSelect">
+              <span class="label-icon">🚘</span> Select Vehicle
+            </label>
+            <div class="custom-select-wrap">
+              <select id="vehicleSelect" class="form-control">
+                <option value="thar-4x4">Mahindra Thar 4x4 (₹3,800/day)</option>
+                <option value="bmw-3series">BMW 3 Series M Sport (₹8,500/day)</option>
+                <option value="fortuner-legender">Toyota Fortuner Legender (₹5,500/day)</option>
+                <option value="creta-sx">Hyundai Creta SX Automatic (₹2,600/day)</option>
+                <option value="baleno-alpha">Maruti Suzuki Baleno Alpha (₹1,600/day)</option>
+                <option value="s1000rr-bike">BMW S1000RR Superbike (₹4,500/day)</option>
+              </select>
+              <span class="select-chevron">▾</span>
+            </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="vehicleSelect">Vehicle Selection</label>
-            <select id="vehicleSelect" class="form-control">
-              <option value="thar-4x4">Mahindra Thar 4x4 (₹3,800/day)</option>
-              <option value="bmw-3series">BMW 3 Series M Sport (₹8,500/day)</option>
-              <option value="fortuner-legender">Toyota Fortuner Legender (₹5,500/day)</option>
-              <option value="creta-sx">Hyundai Creta SX Automatic (₹2,600/day)</option>
-              <option value="baleno-alpha">Maruti Suzuki Baleno Alpha (₹1,600/day)</option>
-              <option value="s1000rr-bike">BMW S1000RR Superbike (₹4,500/day)</option>
-            </select>
+            <label class="form-label" for="kmPackageSelect">
+              <span class="label-icon">🛣️</span> KM Limit Plan
+            </label>
+            <div class="custom-select-wrap">
+              <select id="kmPackageSelect" class="form-control">
+                <option value="150km">Standard 150 km/day Package</option>
+                <option value="300km">300 km/day Package (+₹200/day)</option>
+                <option value="unlimited">Unlimited KM Package (+₹400/day)</option>
+              </select>
+              <span class="select-chevron">▾</span>
+            </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="kmPackageSelect">Kilometer Limit Package</label>
-            <select id="kmPackageSelect" class="form-control">
-              <option value="150km">Standard 150 km/day Package</option>
-              <option value="300km">300 km/day Package (+₹200/day)</option>
-              <option value="unlimited">Unlimited Kilometers Package (+₹400/day)</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="pickupDate">Pickup Date & Time</label>
+            <label class="form-label" for="pickupDate">
+              <span class="label-icon">📅</span> Pickup Date & Time
+            </label>
             <input type="datetime-local" id="pickupDate" class="form-control">
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="returnDate">Return Date & Time</label>
+            <label class="form-label" for="returnDate">
+              <span class="label-icon">🏁</span> Return Date & Time
+            </label>
             <input type="datetime-local" id="returnDate" class="form-control">
           </div>
         </div>
@@ -179,29 +225,30 @@
         <div class="form-options-row">
           <label class="checkbox-box" for="airportDeliveryCheckbox">
             <input type="checkbox" id="airportDeliveryCheckbox">
-            <span class="checkbox-text">✈️ Include Cochin Airport (COK) Delivery Fee (+₹300)</span>
+            <span class="checkbox-text">✈️ Cochin Airport (COK) Pickup & Drop (+₹300)</span>
           </label>
 
-          <div class="form-group" style="margin-bottom:0; flex-direction:row; align-items:center; gap:8px;">
-            <label class="form-label" for="promoInput" style="margin:0;">Promo Code:</label>
-            <input type="text" id="promoInput" class="form-control" value="OFF300" style="width:140px; text-transform:uppercase; font-weight:800;">
+          <div class="promo-box-wrap">
+            <span class="promo-label">Promo Code:</span>
+            <input type="text" id="promoInput" class="form-control promo-input" value="OFF300">
+            <span class="promo-applied-badge">✓ ACTIVE</span>
           </div>
         </div>
 
         <div class="price-summary-banner">
           <div class="price-calc-details">
             <div class="price-calc-item">
-              <span class="calc-title">RENTAL DURATION</span>
+              <span class="calc-title">DURATION</span>
               <span id="calcDaysVal" class="calc-val">3 Days</span>
             </div>
             <div class="price-calc-item">
-              <span class="calc-title">ESTIMATED FARE</span>
-              <span id="calcTotalVal" class="calc-val" style="color:var(--brand-yellow); font-size:1.5rem;">₹11,400</span>
+              <span class="calc-title">TOTAL FARE</span>
+              <span id="calcTotalVal" class="calc-val-glow">₹11,400</span>
             </div>
           </div>
 
-          <a id="whatsappBookingBtn" href="https://wa.me/917034060000" target="_blank" class="btn-standard btn-whatsapp">
-            Book via WhatsApp 💬
+          <a id="whatsappBookingBtn" href="https://wa.me/917034060000" target="_blank" class="btn-standard btn-whatsapp btn-hero-cta">
+            <span>Book via WhatsApp</span> 💬
           </a>
         </div>
       </div>
@@ -707,7 +754,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <div class="brand-title" style="margin-bottom:12px; color:#ffffff;">SACH<span style="color:var(--brand-yellow);">CARS</span></div>
+          <img src="assets/sachcars-logo.png" alt="SACH CARZ — Rent a Car" class="footer-logo-img">
           <p style="color:#94a3b8; font-size:0.9rem;">
             Self Drive SACH CARS | Kerala's premier self-drive car & bike rental network. Headquarters at Jawaharlal Nehru International Stadium, Kaloor, Kochi with regional depots in Kollam, Adoor, Pathanamthitta, and Kottayam.
           </p>
@@ -752,6 +799,19 @@
       </div>
     </div>
   </footer>
+
+  <!-- STICKY MOBILE QUICK ACTION BAR (Visible on <768px screens) -->
+  <div class="mobile-bottom-bar">
+    <a href="tel:+917034060000" class="mobile-bar-btn mobile-bar-call">
+      <span>📞 Call HQ</span>
+    </a>
+    <a href="#booking" class="mobile-bar-btn mobile-bar-book">
+      <span>🎛️ Quick Book</span>
+    </a>
+    <a href="https://wa.me/917034060000" target="_blank" class="mobile-bar-btn mobile-bar-whatsapp">
+      <span>💬 WhatsApp</span>
+    </a>
+  </div>
 
   <script src="app.js"></script>
 </body>
