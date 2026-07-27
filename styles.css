@@ -1043,13 +1043,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* SECTION UTILITIES */
 .section-padding {
-  padding: 85px 0;
+  padding: 44px 0;
 }
 
 .section-header {
   text-align: center;
   max-width: 680px;
-  margin: 0 auto 48px;
+  margin: 0 auto 32px;
 }
 
 .section-title {
@@ -1907,6 +1907,7 @@ h1, h2, h3, h4, h5, h6 {
 .about-section {
   background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-surface) 100%);
   position: relative;
+  padding-bottom: 24px;
 }
 
 .about-hero-card {
@@ -2112,6 +2113,7 @@ h1, h2, h3, h4, h5, h6 {
    ========================================================================== */
 .values-section {
   background: var(--bg-surface);
+  padding-top: 24px;
 }
 
 .values-grid {
