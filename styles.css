@@ -801,8 +801,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .price-summary-banner {
   margin-top: 10px;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  color: #ffffff;
+  background: var(--bg-card);
+  color: var(--text-main);
   padding: 24px 32px;
   border-radius: var(--radius-lg);
   display: flex;
@@ -810,8 +810,22 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  border: 1px solid rgba(250, 175, 24, 0.3);
-  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.15);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.price-summary-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--brand-yellow), #f59e0b);
+  border-top-left-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-lg);
 }
 
 .price-calc-details {
@@ -828,7 +842,7 @@ h1, h2, h3, h4, h5, h6 {
 .calc-title {
   font-size: 0.74rem;
   text-transform: uppercase;
-  color: #94a3b8;
+  color: var(--text-muted);
   font-weight: 800;
   letter-spacing: 0.08em;
 }
@@ -837,7 +851,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-size: 1.35rem;
   font-weight: 900;
-  color: #ffffff;
+  color: var(--text-main);
 }
 
 /* REAL POLICIES GRID FROM SACHCARS.COM */
@@ -1913,6 +1927,8 @@ h1, h2, h3, h4, h5, h6 {
   width: 6px;
   height: 100%;
   background: linear-gradient(180deg, var(--brand-yellow), #f59e0b);
+  border-top-left-radius: var(--radius-xl);
+  border-bottom-left-radius: var(--radius-xl);
 }
 
 .about-grid {
@@ -1993,13 +2009,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .about-glass-card {
-  background: linear-gradient(135deg, var(--brand-black) 0%, var(--brand-black-deep) 100%);
-  color: #ffffff;
+  background: var(--bg-card);
+  color: var(--text-main);
   border-radius: var(--radius-lg);
   padding: 32px;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(250, 175, 24, 0.25);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-card);
   position: relative;
+  overflow: hidden;
 }
 
 .glass-card-header {
@@ -2008,14 +2025,14 @@ h1, h2, h3, h4, h5, h6 {
   gap: 14px;
   margin-bottom: 24px;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .badge-icon-wrap {
   width: 44px;
   height: 44px;
-  background: rgba(250, 175, 24, 0.2);
-  color: var(--brand-yellow);
+  background: rgba(250, 175, 24, 0.15);
+  color: var(--brand-yellow-hover);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2025,23 +2042,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-card-header h4 {
-  color: #ffffff;
+  color: var(--text-main);
   font-size: 1.1rem;
   font-weight: 800;
 }
 
 .glass-card-header p {
-  color: #94a3b8;
+  color: var(--text-muted);
   font-size: 0.82rem;
 }
 
 .quote-box {
   position: relative;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-surface);
   border-left: 3px solid var(--brand-yellow);
   padding: 16px 20px;
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   margin-bottom: 24px;
+  border: 1px solid var(--border-light);
+  border-left: 3px solid var(--brand-yellow);
 }
 
 .quote-symbol {
@@ -2056,7 +2075,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .quote-box p {
   font-size: 0.92rem;
-  color: #e2e8f0;
+  color: var(--text-secondary);
   font-style: italic;
   line-height: 1.6;
 }
@@ -2068,23 +2087,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-stat {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--bg-surface);
   padding: 14px;
   border-radius: var(--radius-sm);
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-light);
 }
 
 .stat-num {
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 900;
-  color: var(--brand-yellow);
+  color: var(--brand-black);
 }
 
 .stat-label {
   font-size: 0.78rem;
-  color: #94a3b8;
+  color: var(--text-muted);
 }
 
 
