@@ -116,11 +116,14 @@ document.addEventListener('DOMContentLoaded', () => {
 function setupMobileNav() {
   const toggle = document.getElementById('navToggle');
   const menu = document.getElementById('navMenu');
+  const overlay = document.getElementById('navOverlay');
+  const drawerCloseBtn = document.getElementById('navDrawerClose');
   if (!toggle || !menu) return;
 
   const closeMenu = () => {
     toggle.classList.remove('is-open');
     menu.classList.remove('is-open');
+    if (overlay) overlay.classList.remove('is-open');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Open menu');
     document.body.classList.remove('nav-open');
@@ -129,6 +132,7 @@ function setupMobileNav() {
   const openMenu = () => {
     toggle.classList.add('is-open');
     menu.classList.add('is-open');
+    if (overlay) overlay.classList.add('is-open');
     toggle.setAttribute('aria-expanded', 'true');
     toggle.setAttribute('aria-label', 'Close menu');
     document.body.classList.add('nav-open');
@@ -143,9 +147,15 @@ function setupMobileNav() {
     }
   });
 
-  const drawerCloseBtn = document.getElementById('navDrawerClose');
   if (drawerCloseBtn) {
-    drawerCloseBtn.addEventListener('click', closeMenu);
+    drawerCloseBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMenu();
+    });
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', closeMenu);
   }
 
   menu.querySelectorAll('a').forEach(link => {
